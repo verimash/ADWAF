@@ -17,7 +17,7 @@ AD-WAF решение для фильтрации трафика на уровн
   ], 
   "packetAnalyzeActual": { // Текущий пакет (который был прислан на анализ)
     "type": "backend->client", // Тип направления пакета
-    "stream": "HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6 Python/3.14.0\r\nDate:.....utilities/</a></li>\n</ul>\n<hr>\n</body>\n</html>\n" // ВСЕГДА в виде bytes
+    "stream": "HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6.....\n</ul>\n<hr>\n</body>\n</html>\n" // ВСЕГДА в виде bytes
   }
 }
 ```
