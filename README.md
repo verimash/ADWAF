@@ -30,3 +30,19 @@ def general(data):
 
     return {"status": True} # анализ завершён успешно
 ```
+## Выводим пользователю свой ответ на анализ (замена ответа сервера) + дроп соединения
+```python
+def general(data):
+    stream = data['packetAnalyzeActual']['stream'].decode("utf-8") # вытаскиваем stream
+    userMessage = """HTTP/1.1 504 GATEWAY TIMEOUT
+Server: aHR0cHM6Ly90Lm1lL3ZlcmltYXNoLzI4MQ==
+Content-Type: text/html; charset=utf-8
+Connection: close
+
+stop exploit!!!!!!!!!!!!!!!!!!!!!<br>aHR0cHM6Ly90Lm1lL3ZlcmltYXNoLzI4MQ==\n\n"""
+
+    if "flag{" in stream: # если flag{ есть в stream-object
+        return {"status": False, "uiDATA": userMessage} # выводим пользователю кастомное сообщение
+
+    return {"status": True} # анализ завершён успешно
+```
