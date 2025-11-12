@@ -1,6 +1,6 @@
 # ADWAF | L7-Firewall
 AD-WAF решение для фильтрации трафика на уровне L7  
-В данном репо только инструкции по исполняемым функциям (FF; Filter-Function)
+В данном репо только инструкции по исполняемым функциям (FF; Filter-Function). Для сотрудничества пишите в личку, контакты в профиле.
 
 ## Структура посылаемого сообщения в фильтр
 Данные приходят в следующем формате:
@@ -21,6 +21,12 @@ AD-WAF решение для фильтрации трафика на уровн
   }
 }
 ```
+## Простые примеры обработки сообщения
 ```python
-print("hello world!")
+def general(data):
+    stream = data['packetAnalyzeActual']['stream'].decode("utf-8") # вытаскиваем stream
+    if "flag{" in stream: # если flag{ есть в stream-object
+        return {"status": False}
+
+    return {"status": True} # анализ завершён успешно
 ```
