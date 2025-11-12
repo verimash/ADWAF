@@ -6,7 +6,27 @@ AD-WAF решение для фильтрации трафика на уровн
 Данные приходят в следующем формате:
 ```json
 {
-  "connectionId": "ID-подключения:string", 
+  "connectionId": "ID-подключения:string",
+  "webUniqueToken": "string::24bytes" // Либо уникальный токен, либо None/False, если stream!=http,
+  "webUniqueSessions": [
+    {
+      "eventId": "1", // ID-event'а
+      "serviceId": "1", // ID-сервиса, к которому выполнялось обращение
+      "tcptype": "http", // Тип соединения (http/tcp)
+      "webUniqueToken": "string::24bytes",
+      "message": "00:58:58 | [/flag%7Bnto%7D.png]", // сообщение, выведенное в веб-морде
+      "status": "OK|Connection|dropped", // статус соединения
+      "analyzeInfo": {"detected": false}, // статус анализа, false - необнаружено, true - обнаружено (что-либо)
+      "packets": [
+        {
+          "type": "client->backend", // Тип направления пакета
+          "stream": "R0VUIC9mbGFnJT...:base64string", // Данные пакета в base64
+          "timestamp": 1762950737.564821, // timestamp-захвата
+          "analyze": false // Если сообщение не было проанализировано до этого, если проанализировано то analyze=True
+        }
+      ]
+    }
+  ]
   "packets": [ // Список пакетов за соединение
     {
       "type": "client->backend", // Тип направления пакета
