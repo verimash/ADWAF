@@ -44,11 +44,8 @@ AD-WAF решение для фильтрации трафика на уровн
 {
   "connectionId": "d24dd7d717cdc5c2bf9ffe51",
   "webUniqueToken": "3f21aaad" // Либо уникальный токен, либо None/False, если stream!=http,
-  "webUniqueSessions": [
-
-  ]
-  "packets": [ // Список пакетов за соединение
-  ], 
+  "webUniqueSessions": []
+  "packets": [], // Список пакетов за соединение
   "packetAnalyzeActual": { // Текущий пакет (который был прислан на анализ)
     "type": "backend->client", // Тип направления пакета
     "stream": b"<script>alert(1)</script>" // ВСЕГДА в виде bytes
