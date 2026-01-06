@@ -53,6 +53,13 @@ AD-WAF решение для фильтрации трафика на уровн
 }
 ```
 
+```json
+{
+  "status": False,
+  "message": "XSS-detected!"
+}
+```
+
 ## Простые примеры обработки сообщения
 ```python
 def general(data):
